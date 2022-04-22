@@ -38,11 +38,13 @@ function App() {
 		}
 
 		if (placeInfo) {
-			<FetchingPlaceInfo
-				isLoading={isLoading}
-				isError={isError}
-				place={placeInfo}
-			/>;
+			return (
+				<FetchingPlaceInfo
+					isLoading={isLoading}
+					isError={isError}
+					place={placeInfo}
+				/>
+			);
 		}
 	};
 
