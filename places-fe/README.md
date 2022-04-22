@@ -33,3 +33,4 @@ passed.
 - add tests for app.tsx
 - improve UI :D
 - reuse types from BE
+- folder structure (for some reason I have place-fe/place-fe/...)
