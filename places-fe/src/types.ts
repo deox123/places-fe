@@ -6,8 +6,8 @@ export interface Place {
 }
 export interface OpeningHours {
 	days: Days;
-	closed_on_holidays: boolean;
-	open_by_arrangement: boolean;
+	closed_on_holidays?: boolean;
+	open_by_arrangement?: boolean;
 }
 export interface Days {
 	monday?: Day[] | null;
