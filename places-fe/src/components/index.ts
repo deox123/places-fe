@@ -1,1 +1,1 @@
-export { FetchingPlaceInfo } from './FetchingPlaceInfo';
+export { FetchingPlaceInfo } from './FetchingPlaceInfo/FetchingPlaceInfo';

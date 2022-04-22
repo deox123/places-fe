@@ -1,0 +1,1 @@
+export { FetchingPlaceInfo } from './FetchingPlaceInfo';

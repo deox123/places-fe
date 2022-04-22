@@ -1,4 +1,4 @@
-import { Days, Day, GroupedDays } from '../types';
+import { Days, Day, GroupedDays } from '../../types';
 
 const DAYS = [
 	'monday',
@@ -11,6 +11,7 @@ const DAYS = [
 ] as const;
 
 export const groupOpeningDays = (days: Days): GroupedDays[] => {
+	console.log('GROUP');
 	let start: string = DAYS[0];
 	let end: string = DAYS[0];
 	let grouped: GroupedDays[] = [];

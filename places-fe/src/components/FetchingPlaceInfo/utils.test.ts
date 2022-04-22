@@ -1,4 +1,4 @@
-import { Days } from '../types';
+import { Days } from '../../types';
 import { daysWithSameOpening, groupOpeningDays } from './utils';
 
 // TODO change mock data to be as minimal and clear as possible
