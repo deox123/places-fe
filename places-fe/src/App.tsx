@@ -28,6 +28,24 @@ function App() {
 		setValueForFetch(searchValue);
 	};
 
+	const renderPlaceInfo = () => {
+		if (isLoading) {
+			return <div>Loading...</div>;
+		}
+
+		if (isError) {
+			return <div>Something went wrong</div>;
+		}
+
+		if (placeInfo) {
+			<FetchingPlaceInfo
+				isLoading={isLoading}
+				isError={isError}
+				place={placeInfo}
+			/>;
+		}
+	};
+
 	return (
 		<div className="App">
 			<form onSubmit={handleSubmit}>
@@ -43,13 +61,7 @@ function App() {
 					Search
 				</button>
 			</form>
-			{placeInfo && (
-				<FetchingPlaceInfo
-					isLoading={isLoading}
-					isError={isError}
-					place={placeInfo}
-				/>
-			)}
+			{renderPlaceInfo()}
 		</div>
 	);
 }

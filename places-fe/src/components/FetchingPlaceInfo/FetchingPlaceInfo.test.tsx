@@ -56,16 +56,4 @@ describe('FetchingPlaceInfo', () => {
 		setup({ place: mockPlaceInfoWithAllClosedDays });
 		expect(screen.getByText('closed')).toBeInTheDocument();
 	});
-
-	it('should show error state if provided', () => {
-		setup({ isError: true });
-
-		expect(screen.getByText('Something went wrong')).toBeInTheDocument();
-	});
-
-	it('should show loading state if provided', () => {
-		setup({ isLoading: true });
-
-		expect(screen.getByText('Loading...')).toBeInTheDocument();
-	});
 });
