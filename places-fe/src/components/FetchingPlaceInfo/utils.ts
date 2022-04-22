@@ -11,7 +11,6 @@ const DAYS = [
 ] as const;
 
 export const groupOpeningDays = (days: Days): GroupedDays[] => {
-	console.log('GROUP');
 	let start: string = DAYS[0];
 	let end: string = DAYS[0];
 	let grouped: GroupedDays[] = [];
