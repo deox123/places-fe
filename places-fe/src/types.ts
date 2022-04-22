@@ -15,9 +15,15 @@ export interface Days {
 	wednesday?: Day[] | null;
 	thursday?: Day[] | null;
 	friday?: Day[] | null;
+	saturday?: Day[] | null;
+	sunday?: Day[] | null;
 }
 export interface Day {
 	start: string;
 	end: string;
-	type: 'Open' | 'Closed';
+}
+
+export interface GroupedDays {
+	label: string;
+	openings: Day[];
 }
