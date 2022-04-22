@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+import { useQuery } from 'react-query';
+
+import { getPlaceInfo } from './api';
+import { FetchingPlaceInfo } from './components';
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [searchValue, setSearchValue] = useState('');
+	const [valueForFetch, setValueForFetch] = useState('');
+
+	const {
+		isLoading,
+		isError,
+		data: placeInfo,
+	} = useQuery(
+		['placeInfo', valueForFetch],
+		() => getPlaceInfo(valueForFetch),
+		{
+			staleTime: 1000 * 60, // 1min
+			enabled: !!valueForFetch,
+		}
+	);
+
+	const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		setValueForFetch(searchValue);
+	};
+
+	return (
+		<div className="App">
+			<form onSubmit={handleSubmit}>
+				<label>
+					Enter place id
+					<input
+						type="text"
+						value={searchValue}
+						onChange={e => setSearchValue(e.target.value)}
+					/>
+				</label>
+				<button type="submit" disabled={!searchValue}>
+					Search
+				</button>
+			</form>
+			{placeInfo && (
+				<FetchingPlaceInfo
+					isLoading={isLoading}
+					isError={isError}
+					place={placeInfo}
+				/>
+			)}
+		</div>
+	);
 }
 
 export default App;
